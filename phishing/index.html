@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<!--
+  PHISHING-AWARENESS EXERCISE PAGE  (Scenario 2)
+  ==============================================
+  This page is a deliberately imperfect IMITATION of a login page, used ONLY to
+  train participants to spot suspicious signs. It captures NOTHING:
+  the form's submit handler discards all input and shows a debrief message.
+  Serve it from an obviously different/fake host (e.g. http://tradeportaI-secure.local)
+  to make the URL anomaly part of the lesson. Never collect real credentials.
+
+  PLANTED SUSPICIOUS INDICATORS (for the answer key):
+    1. Look-alike domain  (capital "I" instead of lowercase "l")
+    2. Plain HTTP, no padlock / no HTTPS
+    3. Urgency wording ("your account will be suspended")
+    4. Generic greeting + spelling slip ("Acount")
+    5. Mismatched / off-brand styling and missing legal footer
+    6. Form action goes nowhere real (no privacy notice)
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trade Portal - Secure Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #e9eef3; margin: 0; }
+    .warn { background: #ffeb99; color: #6b5200; padding: 6px 12px; font-size: 12px; text-align: center; }
+    .box { max-width: 360px; margin: 60px auto; background: #fff; padding: 24px; border-radius: 6px;
+           box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+    .urgent { color: #b00020; font-size: 13px; }
+    input { width: 100%; padding: 9px; margin: 6px 0 12px; border: 1px solid #bbb; border-radius: 4px; }
+    button { width: 100%; padding: 10px; background: #1a5fb4; color: #fff; border: 0; border-radius: 4px; }
+    .debrief { display: none; background: #d4edda; color: #155724; padding: 12px; border-radius: 6px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="warn">AWARENESS EXERCISE — This is a harmless training mock-up. It stores nothing. Do not enter real passwords.</div>
+  <div class="box">
+    <h2>Trade Portal Acount Login</h2>
+    <p class="urgent">Warning: your acount will be suspended in 24 hours unless you verify now!</p>
+    <form id="f" onsubmit="return showDebrief(event)">
+      <label>Username</label>
+      <input name="u" autocomplete="off">
+      <label>Password</label>
+      <input name="p" type="password" autocomplete="off">
+      <button type="submit">Verify Now</button>
+    </form>
+    <div id="debrief" class="debrief">
+      <strong>This was a phishing-awareness exercise.</strong>
+      No data was captured or stored. How many suspicious signs did you notice?
+      (Check the URL spelling, HTTP vs HTTPS, urgency wording, spelling errors, and styling.)
+    </div>
+  </div>
+  <script>
+    // Discards all input. Never transmits or stores anything.
+    function showDebrief(e) {
+      e.preventDefault();
+      document.getElementById('f').reset();
+      document.getElementById('debrief').style.display = 'block';
+      return false;
+    }
+  </script>
+</body>
+</html>

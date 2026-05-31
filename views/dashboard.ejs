@@ -1,0 +1,15 @@
+<%- include('partials/head') %>
+<h2>Welcome, <%= user.username %></h2>
+<p>Your role: <strong><%= user.role %></strong></p>
+<h3>Documents</h3>
+<p class="hint">All document links are shown so testers can attempt forced browsing / IDOR.
+   In legacy mode every link opens; in modern mode unauthorized links return 403.</p>
+<ul>
+  <% docs.forEach(function (d) { %>
+    <li>
+      <a href="/documents/<%= d.id %>"><%= d.title %></a>
+      &mdash; owner: <%= d.owner %> [<%= d.classification %>]
+    </li>
+  <% }); %>
+</ul>
+<%- include('partials/foot') %>

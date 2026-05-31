@@ -1,0 +1,22 @@
+# Keycloak as the lab Identity Provider (stands in for Microsoft Entra ID).
+# Imports the pre-built "tradeportal" realm on startup.
+#
+#   docker compose up        # start (foreground)
+#   docker compose up -d     # start (background)
+#   docker compose down      # stop
+#
+# Admin console:  http://localhost:8080/  (admin / admin)
+# Realm issuer:   http://localhost:8080/realms/tradeportal
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    container_name: tradeportal-keycloak
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json:ro

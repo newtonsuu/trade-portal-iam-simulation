@@ -1,0 +1,4 @@
+node_modules/
+lab.db
+lab-*.db
+logs/*.log

@@ -1,0 +1,4 @@
+participant_id,consent_obtained,url_anomaly_spotted,http_no_padlock_spotted,urgency_wording_spotted,spelling_error_spotted,styling_mismatch_spotted,no_legal_footer_spotted,total_signs_spotted_of_6,prior_training,notes
+P01,yes,,,,,,,,no,
+P02,yes,,,,,,,,no,
+P03,yes,,,,,,,,yes,

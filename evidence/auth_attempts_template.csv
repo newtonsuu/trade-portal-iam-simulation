@@ -1,0 +1,6 @@
+build,username,attempt_no,password_used,outcome,lockout_triggered,response_time_ms,notes
+legacy,normal_user,1,wrongpass,denied,no,,
+legacy,normal_user,2,wrongpass,denied,no,,
+legacy,normal_user,20,wrongpass,denied,no,,no lockout observed
+modern,normal_user,1,wrongpass,denied,no,,
+modern,normal_user,5,wrongpass,denied,yes,,locked after threshold

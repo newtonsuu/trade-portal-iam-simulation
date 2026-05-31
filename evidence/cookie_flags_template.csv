@@ -1,0 +1,3 @@
+build,cookie_name,httponly,secure,samesite,max_age_set,server_invalidates_on_logout,idle_timeout,notes
+legacy,sid,no,no,none,no,no,no,
+modern,sid,yes,no*,lax,yes,yes,yes,*secure=true when served over TLS

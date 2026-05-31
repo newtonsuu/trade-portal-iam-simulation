@@ -1,0 +1,20 @@
+<%- include('partials/head') %>
+<h2>Trade Portal Login</h2>
+<% if (msg) { %><p class="msg"><%= msg %></p><% } %>
+<form method="post" action="/login" class="card">
+  <label>Username <input name="username" autocomplete="off"></label>
+  <label>Password <input type="password" name="password" autocomplete="off"></label>
+  <button type="submit">Sign in</button>
+</form>
+<p><a href="/register">Register (test password policy)</a></p>
+<details class="hint">
+  <summary>Dummy lab accounts</summary>
+  <ul>
+    <li>normal_user / 123456 (role: user)</li>
+    <li>broker_alpha / password (role: broker)</li>
+    <li>client_beta / qwerty (role: broker)</li>
+    <li>admin_root / Admin@SuperSecure#2026 (role: admin)</li>
+    <li>auditor_one / Auditor@Strong#2026 (role: auditor)</li>
+  </ul>
+</details>
+<%- include('partials/foot') %>

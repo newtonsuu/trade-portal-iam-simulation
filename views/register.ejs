@@ -1,0 +1,11 @@
+<%- include('partials/head') %>
+<h2>Register (lab)</h2>
+<p>Use this to demonstrate password-policy enforcement. In <strong>legacy</strong> mode any
+   password (e.g. <code>123456</code>) is accepted; in <strong>modern</strong> mode the policy rejects weak/common passwords.</p>
+<% if (msg) { %><p class="msg"><%= msg %></p><% } %>
+<form method="post" action="/register" class="card">
+  <label>Username <input name="username" autocomplete="off"></label>
+  <label>Password <input name="password" autocomplete="off"></label>
+  <button type="submit">Create account</button>
+</form>
+<%- include('partials/foot') %>

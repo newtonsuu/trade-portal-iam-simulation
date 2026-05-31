@@ -1,0 +1,9 @@
+build,role,own_documents,other_broker_documents,admin_panel,public_documents,expected,observed,pass_fail
+legacy,normal_user,allow,allow_BUG,allow_BUG,allow,deny_others,,
+legacy,broker,allow,allow_BUG,allow_BUG,allow,deny_others,,
+legacy,admin,allow,allow,allow,allow,allow_all,,
+legacy,auditor,allow,allow,deny,allow,read_only_all,,
+modern,normal_user,allow,deny_403,deny_403,allow,least_privilege,,
+modern,broker,allow,deny_403,deny_403,allow,least_privilege,,
+modern,admin,allow,allow,allow,allow,allow_all,,
+modern,auditor,allow,allow_readonly,deny_403,allow,read_only_all,,

@@ -1,0 +1,102 @@
+{
+  "realm": "tradeportal",
+  "enabled": true,
+  "displayName": "Trade Portal (Lab IdP)",
+  "loginWithEmailAllowed": false,
+  "registrationAllowed": false,
+
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+
+  "eventsEnabled": true,
+  "eventsListeners": ["jboss-logging"],
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": true,
+
+  "passwordPolicy": "length(12) and notUsername and passwordHistory(3) and notEmail",
+
+  "otpPolicyType": "totp",
+  "otpPolicyAlgorithm": "HmacSHA1",
+  "otpPolicyDigits": 6,
+  "otpPolicyPeriod": 30,
+
+  "webAuthnPolicyRpEntityName": "Trade Portal",
+  "webAuthnPolicyPasswordlessRpEntityName": "Trade Portal",
+  "webAuthnPolicyPasswordlessSignatureAlgorithms": ["ES256"],
+
+  "roles": {
+    "realm": [
+      { "name": "user",    "description": "Normal portal user" },
+      { "name": "broker",  "description": "Broker / client user" },
+      { "name": "admin",   "description": "Administrator" },
+      { "name": "auditor", "description": "Read-only auditor" }
+    ]
+  },
+
+  "clients": [
+    {
+      "clientId": "trade-portal",
+      "name": "Trade Portal Web App",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "trade-portal-secret-lab",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:3000/*"
+      },
+      "fullScopeAllowed": true
+    }
+  ],
+
+  "users": [
+    {
+      "username": "normal_user",
+      "enabled": true,
+      "firstName": "Normal", "lastName": "User",
+      "credentials": [{ "type": "password", "value": "User@Strong#2026", "temporary": false }],
+      "requiredActions": ["CONFIGURE_TOTP"],
+      "realmRoles": ["user"]
+    },
+    {
+      "username": "broker_alpha",
+      "enabled": true,
+      "firstName": "Broker", "lastName": "Alpha",
+      "credentials": [{ "type": "password", "value": "Broker@Strong#2026", "temporary": false }],
+      "requiredActions": ["CONFIGURE_TOTP"],
+      "realmRoles": ["broker"]
+    },
+    {
+      "username": "client_beta",
+      "enabled": true,
+      "firstName": "Client", "lastName": "Beta",
+      "credentials": [{ "type": "password", "value": "Client@Strong#2026", "temporary": false }],
+      "requiredActions": ["CONFIGURE_TOTP"],
+      "realmRoles": ["broker"]
+    },
+    {
+      "username": "admin_root",
+      "enabled": true,
+      "firstName": "Admin", "lastName": "Root",
+      "credentials": [{ "type": "password", "value": "Admin@SuperSecure#2026", "temporary": false }],
+      "requiredActions": ["CONFIGURE_TOTP"],
+      "realmRoles": ["admin"]
+    },
+    {
+      "username": "auditor_one",
+      "enabled": true,
+      "firstName": "Auditor", "lastName": "One",
+      "credentials": [{ "type": "password", "value": "Auditor@Strong#2026", "temporary": false }],
+      "requiredActions": ["CONFIGURE_TOTP"],
+      "realmRoles": ["auditor"]
+    }
+  ]
+}

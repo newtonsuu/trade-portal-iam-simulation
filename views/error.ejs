@@ -1,0 +1,11 @@
+<%- include('partials/head') %>
+<h2>Error</h2>
+<% if (generic) { %>
+  <%# MODERN / safe: no internal detail leaked %>
+  <p class="msg">You are not authorized to view this resource, or it does not exist.</p>
+<% } else { %>
+  <%# LEGACY: verbose error disclosure (engine, query) — Scenario 3 evidence %>
+  <pre class="verbose"><%= detail %></pre>
+<% } %>
+<p><a href="/dashboard">&larr; Back to dashboard</a></p>
+<%- include('partials/foot') %>

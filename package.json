@@ -1,0 +1,22 @@
+{
+  "name": "trade-portal-simulation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Controlled lab mock-up of a legacy web-based trade portal for an ACM-style cybersecurity case study. NOT for use against any production system.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "legacy": "cross-env MODE=legacy node --no-warnings server.js",
+    "modern": "cross-env MODE=modern node --no-warnings server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "openid-client": "^5.7.0"
+  }
+}

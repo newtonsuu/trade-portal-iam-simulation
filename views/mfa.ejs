@@ -1,0 +1,10 @@
+<%- include('partials/head') %>
+<h2>Two-Factor Authentication</h2>
+<p>A one-time 6-digit code has been issued. In this lab it is printed to the
+   <strong>server console</strong> (simulating an authenticator app / SMS).</p>
+<% if (msg) { %><p class="msg"><%= msg %></p><% } %>
+<form method="post" action="/mfa" class="card">
+  <label>One-time code <input name="otp" autocomplete="off" inputmode="numeric"></label>
+  <button type="submit">Verify</button>
+</form>
+<%- include('partials/foot') %>

@@ -1,0 +1,12 @@
+<%- include('partials/head') %>
+<h2>Admin Panel</h2>
+<p class="msg">Sensitive administrative area &mdash; should be restricted to the admin role only.</p>
+<table>
+  <thead><tr><th>ID</th><th>Username</th><th>Role</th></tr></thead>
+  <tbody>
+    <% users.forEach(function (u) { %>
+      <tr><td><%= u.id %></td><td><%= u.username %></td><td><%= u.role %></td></tr>
+    <% }); %>
+  </tbody>
+</table>
+<%- include('partials/foot') %>

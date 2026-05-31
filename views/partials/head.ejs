@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title : 'Trade Portal (Lab)' %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="banner <%= mode === 'modern' ? 'modern' : 'legacy' %>">
+    MODE: <%= mode.toUpperCase() %> &mdash; CONTROLLED LAB SIMULATION ONLY (dummy data)
+  </div>
+  <nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/search">Search</a>
+    <% if (user) { %>
+      <% if (user.role === 'admin') { %><a href="/admin">Admin</a><% } %>
+      <span class="who"><%= user.username %> (<%= user.role %>)</span>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+    <% } %>
+  </nav>
+  <main>
